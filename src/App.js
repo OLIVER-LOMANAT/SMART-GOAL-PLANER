@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 
 export default function App() {
   //Setting goals as empty array 
-  const [goal, setGoals] = useState([]);
+  const [goals, setGoals] = useState([]);
   const [currentGoal, setCurrentGoal] = useState({
     name: "",
     targetAmount: "",
@@ -53,7 +53,7 @@ export default function App() {
       body: JSON.stringify(newGoal)
     })
     .then(res => res.json())
-    .then(data => setGoals([...GoalDisplayer, data]))
+    .then(data => setGoals([...goals, data]))
 
     setCurrentGoal({
       name: "",
@@ -63,7 +63,34 @@ export default function App() {
     })
   }
 
-  
+  function handleDepositSubmit(e) {
+    e.preventDefault();
+    const goalToUpdate = goals.find(goal => goal.id === Number(depositData.goalId))
+
+    if(!goalToUpdate) return;
+
+    const updateGoal = {
+      ...goalToUpdate,
+      savedAmount: goalToUpdate.savedAmount + Number(depositData.amount)
+    }
+
+    fetch(`http://localhost:3000/goals/${depositData.goalId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ savedAmount: updateGoal.savedAmount})
+    })
+    .then(res => res.json())
+    .then(updateGoal => {
+      setGoals(goals.map(goal => goal.id === updateGoal.id ? updatedData : goal))
+    })
+
+    setDepositData({
+      goalId: "",
+      amount: ""
+    })
+  }
   return (
    
   )
