@@ -21,8 +21,18 @@ export default function App() {
     .then(data => setGoals(data))
   }, []);
 
-  function handleGoalChange() {
-    
+  function handleGoalChange(e) {
+    setCurrentGoal(prev => ({
+      ...prev,
+      [e.target.name] : e.target.value
+    }))
+  }
+
+  function handleDepositChange(e) {
+    setDepositData(prev => ({
+      ...prev,
+      [e.target.name] : e.target.value
+    }))
   }
 
   return (
