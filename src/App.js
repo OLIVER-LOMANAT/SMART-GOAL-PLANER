@@ -5,6 +5,11 @@ export default function App() {
   const [currentGoal, setCurrentGoal] = useState({
     name: "",
     targetAmount: "",
+    category: "Travel",
+    deadline: "",
+  });
+  const [depositData, setDepositData] = useState({
+    
   })
   return (
    
