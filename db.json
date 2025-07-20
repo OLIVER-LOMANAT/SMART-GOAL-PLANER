@@ -1,20 +1,11 @@
 {
   "goals": [
     {
-      "id": 1752982180248,
+      "id": 1753001688183,
       "name": "Dida loma",
-      "targetAmount": "3000",
-      "category": "Travel",
-      "deadline": "2025-07-04",
-      "savedAmount": 0,
-      "createdAt": "2025-07-20"
-    },
-    {
-      "id": 1752982395864,
-      "name": "Dida loma",
-      "targetAmount": "4000",
-      "category": "Travel",
-      "deadline": "2025-07-31",
+      "targetAmount": "30000",
+      "category": "Emergency",
+      "deadline": "2025-07-22",
       "savedAmount": 0,
       "createdAt": "2025-07-20"
     }
