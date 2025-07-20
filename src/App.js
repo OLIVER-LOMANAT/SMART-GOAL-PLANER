@@ -91,7 +91,38 @@ export default function App() {
       amount: ""
     })
   }
+
+  function deleteGoal(id) {
+    fetch(`http://localhost:3000/goals/${id}`, {
+      method: "DELETE"
+    })
+    .then(() => {
+      setGoals(goals.filter(goal => goal.id !== id))
+    })
+  }
   return (
+
+     <div className="bg-blue-500 h-screen max-w-[850px] mx-auto text-center">
+      <h1 className='text-white text-[50px] py-5'>Smart Goal Planner</h1>
+      
+      <Overview goals={goals} />
+      
+      <div className="flex justify-center gap-10">
+        <GoalForm 
+          currentGoal={currentGoal} 
+          handleChange={handleGoalChange} 
+          handleSubmit={handleGoalSubmit}
+        />
+        <DepositForm 
+          goals={goals}
+          depositData={depositData}
+          handleChange={handleDepositChange}
+          handleSubmit={handleDepositSubmit}
+        />
+      </div>
+      
+      <GoalDisplayer goals={goals} deleteGoal={deleteGoal} />
+    </div>
    
   )
 }
