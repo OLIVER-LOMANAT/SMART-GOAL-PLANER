@@ -1,3 +1,4 @@
+import { create } from "json-server";
 import { useEffect, useState } from "react"
 
 export default function App() {
@@ -35,6 +36,34 @@ export default function App() {
     }))
   }
 
+  function handleGoalSubmit(e) {
+    e.preventDefault();
+    const newGoal = {
+      ...currentGoal,
+      id:Date.now(),
+      savedAmount: 0,
+      createdAt: new Date().toISOString().split('T')[0]
+    }
+
+    fetch("http://localhost:3000/goals", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newGoal)
+    })
+    .then(res => res.json())
+    .then(data => setGoals([...GoalDisplayer, data]))
+
+    setCurrentGoal({
+      name: "",
+      targetAmount: "",
+      category: "Travel",
+      deadline: ""
+    })
+  }
+
+  
   return (
    
   )
