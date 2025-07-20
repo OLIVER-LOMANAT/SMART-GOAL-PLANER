@@ -16,7 +16,7 @@ export default function Overview({ goals }) {
         <div className="text-blue-600">
           <h3>Total Saved: ${totalSaved}</h3>
           {nearDeadlineGoals > 0 && (
-            <h3 className="text-yellow-500">⚠️ {nearDeadlineGoals} goals near deadline</h3>
+            <h3 className="text-yellow-500">{nearDeadlineGoals} goals near deadline</h3>
           )}
         </div>
       </div>
