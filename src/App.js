@@ -4,7 +4,7 @@ import DepositForm from './component/DepositForm';
 import { useState, useEffect } from 'react';
 import Overview from './component/Overview';
 
-function App() {
+export default function App() {
   const [goals, setGoals] = useState([]);
   const [currentGoal, setCurrentGoal] = useState({
     name: "",
@@ -131,4 +131,3 @@ function App() {
   );
 }
 
-export default App;
