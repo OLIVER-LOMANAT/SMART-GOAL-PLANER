@@ -1,4 +1,4 @@
-export default function DepositForm() {
+export default function DepositForm({ goals, depositData, handleChange, handleSubmit}) {
     
     return (
         <>
